@@ -56,7 +56,6 @@ Comprehensive EDA was performed to understand sentiment distribution and textual
 * **Sentiment Distribution Charts**: Bar and Pie charts.
 * **Word Clouds**: Per sentiment class.
 * **N-gram Plots**: Unigrams, Bigrams, and Trigrams per sentiment.
-Here is the Sentiment Distribution plot:
 
 <!--<p align="center">
   <img src="https://github.com/indranil143/Mental-Health-Sentiment-Analysis-using-Deep-Learning/blob/main/SS/Sentiment%20Distribution.png" alt="Sentiment Distribution" width="600"/>
