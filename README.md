@@ -2,10 +2,9 @@
 
 ## 🌟 Project Overview
 
-In our digital world, prioritizing mental well-being is critical. This project, uses AI to compassionately listen, understand, and foster a kinder online space. By analyzing sentiments, we provide vital early insights and support, highlighting how crucial this analysis is for accessible mental healthcare. This project, stands as a testament to our commitment to fostering a more empathetic and supportive online environment.
+In our digital world, prioritizing mental well-being is critical. This project, stands as a testament to our commitment to fostering a more empathetic and supportive online environment.
 
-At its heart, this initiative compassionately applies deep learning to classify mental health-related sentiments from textual data.  
-This project aims to classify mental health-related text into **seven distinct sentiment categories** — `Anxiety`, `Bipolar`, `Depression`, `Normal`, `Personality Disorder`, `Stress`, and `Suicidal` — using both traditional and transformer-based deep learning models. It highlights the power of NLP in understanding unspoken emotions and potentially identifying early signs of mental health challenges. 
+This project applies advanced Natural Language Processing (NLP) techniques to classify mental health-related text into **seven distinct sentiment categories** — `Anxiety`, `Bipolar`, `Depression`, `Normal`, `Personality Disorder`, `Stress`, and `Suicidal` — using both traditional machine learning and fine-tuned transformer models (RoBERTa). It demonstrates how AI can assist in early detection of mental health issues from user-generated content.
 Our goal is to provide a tool that can help in early detection and understanding, paving the way for timely support and intervention, and reminding us that behind every screen, there's a human story.
 
 <p align="center">
