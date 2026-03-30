@@ -1,177 +1,71 @@
-# Mental Health Sentiment Analysis using Deep Learning (RoBERTa) 💖
+# Mental Health Emotion Classification using RoBERTa 🚀
 
-## 🌟 Project Overview
-
-In our digital world, prioritizing mental well-being is critical. This project, stands as a testament to our commitment to fostering a more empathetic and supportive online environment.
-
-This project applies advanced Natural Language Processing (NLP) techniques to classify mental health-related text into **seven distinct sentiment categories** — `Anxiety`, `Bipolar`, `Depression`, `Normal`, `Personality Disorder`, `Stress`, and `Suicidal` — using both traditional machine learning and fine-tuned transformer models (RoBERTa). It demonstrates how AI can assist in early detection of mental health issues from user-generated content.
-Our goal is to provide a tool that can help in early detection and understanding, paving the way for timely support and intervention, and reminding us that behind every screen, there's a human story.
-
-<p align="center">
-  <img src="https://i.pinimg.com/736x/14/57/8e/14578edd117e0e6e99aebe86175953f9.jpg" alt="Mental Health Banner" width="360"/>
-</p>
-
-> Behind every message is a human story — and these tools can help make those voices heard.
+## 👨‍💻 Author
+**Samyak Rawat**
 
 ---
 
-## 🧠 Motivation
+## 🌟 Project Overview
 
-In the digital era, individuals often express their deepest struggles through online platforms. Sentiment analysis offers a way to detect and interpret these emotional cues, providing:
+This project focuses on building an end-to-end NLP system to classify mental health-related text into **7 emotional categories** — `Anxiety`, `Bipolar`, `Depression`, `Normal`, `Personality Disorder`, `Stress`, and `Suicidal`.
 
-- 🆘 **Early intervention** for at-risk individuals  
-- 🌐 **Public mental health insights** to shape policies  
-- ❤️ **Stigma reduction** through empathetic AI  
-- 🧠 **Tailored support systems** via classification-driven responses  
+The system leverages both traditional machine learning techniques and transformer-based deep learning models (RoBERTa) to enable early detection of mental health signals from textual data.
+
+---
+
+## 🧠 Key Highlights
+
+- Fine-tuned **RoBERTa-base (125M parameters)** for multi-class classification  
+- Processed and trained on **50,000+ labeled samples**  
+- Built complete **data preprocessing pipeline** (cleaning, lemmatization, tokenization)  
+- Achieved strong performance with optimized class balancing  
+- Compared traditional ML vs transformer-based models  
 
 ---
 
 ## 🔍 Dataset
 
-- **Source**: [Kaggle - Sentiment Analysis for Mental Health](https://www.kaggle.com/datasets/suchintikasarkar/sentiment-analysis-for-mental-health)
-- **Size**: Over 50,000 labeled mental health text entries.
-- **Classes**: 7 multi-class categories: `Anxiety`, `Bipolar`, `Depression`, `Normal`, `Personality disorder`, `Stress`, `Suicidal`.
-- **Initial Data Split**:
-    - Full Training Set Size: 42,434 samples
-    - Raw Test Set Size: 10,609 samples
+- Source: Kaggle (Mental Health Sentiment Dataset)  
+- Size: 50,000+ samples  
+- Classes: Anxiety, Bipolar, Depression, Normal, Personality Disorder, Stress, Suicidal  
 
 ---
 
-## 🔧 Methodology
+## ⚙️ Methodology
 
-### ✅ Data Preprocessing
+### Data Preprocessing
+- Text cleaning (URLs, mentions, punctuation removal)  
+- Stopword removal and lemmatization  
+- Tokenization using HuggingFace tokenizer  
 
-A robust preprocessing pipeline cleaned and normalized text data, including:
+### Models Used
 
-* **Text Cleaning**: Expanding contractions, replacing special tokens (URLs, mentions, hashtags), expanding acronyms, handling digits, reducing repeated characters, and removing punctuation.
-* **Linguistic Processing**: Removing stopwords and lemmatizing words (using spaCy/NLTK).
-* **Filtering**: Removing short texts (less than 5 words after cleaning).
-* **Label Distribution**: Analysis of sentiment class distribution (Depression: 33.77%, Suicidal: 23.20%, Normal: 20.78%, etc.).
+#### 1. Logistic Regression (Baseline)
+- TF-IDF vectorization  
+- Hyperparameter tuning using GridSearchCV  
 
-### 📊 Exploratory Data Analysis (EDA)
-
-Comprehensive EDA was performed to understand sentiment distribution and textual patterns. Visualizations generated include:
-
-* **Sentiment Distribution Charts**: Bar and Pie charts.
-* **Word Clouds**: Per sentiment class.
-* **N-gram Plots**: Unigrams, Bigrams, and Trigrams per sentiment.
-
-<!--<p align="center">
-  <img src="https://github.com/indranil143/Mental-Health-Sentiment-Analysis-using-Deep-Learning/blob/main/SS/Sentiment%20Distribution.png" alt="Sentiment Distribution" width="600"/>
-</p>
--->
-
-### 🧪 Models Implemented
-
-This project utilized both traditional machine learning and advanced deep learning models:
-
-1.  **Logistic Regression (Baseline Model)**
-    * **Vectorization**: TF-IDF with `max_features=5000` and `ngram_range=(1, 2)`.
-    * **Hyperparameter Tuning**: `GridSearchCV` with `f1_weighted` scoring across various solvers, penalties, and C values.
-
-2.  **RoBERTa (Transformer Fine-Tuned)**
-    * **Model**: Fine-tuned `roberta-base` for sequence classification.
-    * **Configuration**: Used `RobertaTokenizerFast`, custom `dropout rate: 0.2`, and `weight decay: 0.01`.
-    * **Training**: Employed `nn.CrossEntropyLoss` with balanced class weights, `AdamW` optimizer, and `linear warmup scheduler`. Trained for 7 epochs with validation monitoring and early stopping, achieving a **best validation accuracy of 0.7386**.
+#### 2. RoBERTa (Deep Learning)
+- Fine-tuned `roberta-base`  
+- Optimizer: AdamW  
+- Loss: CrossEntropy with class weights  
+- Scheduler: Linear warmup  
+- Training with validation monitoring  
 
 ---
 
-## 📈 Results
+## 📊 Results
 
-| Model                  | Accuracy | F1 Score |
-|------------------------|----------|----------|
-| Logistic Regression    | 71.00%   | 0.71     |
-| RoBERTa (fine-tuned)   | 75.33%   | 0.75     |
-
-<!--
-### Confusion Matrix plot for the RoBERTa model
-
-<p align="center">
-  <img src="https://github.com/indranil143/Mental-Health-Sentiment-Analysis-using-Deep-Learning/blob/main/SS/CM%20-%20RoBERTa.png" alt="RoBERTa Confusion Matrix" width="600"/>
-</p>
--->
----
-
-## ✨ Prediction Result Example
-
-The model can lovingly process raw text and output the predicted sentiment along with the probability distribution across all defined sentiment classes, offering insights that can guide compassionate responses.
-
-**Example 1: Positive Sentiment**
-* **Original Text:** "I am feeling absolutely ecstatic and overjoyed today, everything is wonderful!"
-* **Cleaned Text:** "feel absolutely ecstatic overjoyed today everything wonderful"
-* **Predicted Sentiment:** Normal
-* **Class Probabilities:**
-    * Anxiety: 0.0111,
-    * Bipolar: 0.0693,
-    * Depression: 0.1111,
-    * **Normal: 0.7580**,
-    * Personality disorder: 0.0073,
-    * Stress: 0.0021,
-    * Suicidal: 0.0412
-
-**Example 2: Depression Sentiment**
-* **Original Text:** "The weight of this sadness is crushing me. I feel so empty and depressed."
-* **Cleaned Text:** "weight sadness crush feel empty depressed"
-* **Predicted Sentiment:** Depression
-* **Class Probabilities:**
-    * Anxiety: 0.0011,
-    *  Bipolar: 0.0012,
-    *  **Depression: 0.9742**,
-    *  Normal: 0.0023,
-    *  Personality disorder: 0.0015,
-    *  Stress: 0.0006,
-    *  Suicidal: 0.0191
+| Model                | Accuracy |
+|---------------------|----------|
+| Logistic Regression | ~71%     |
+| RoBERTa             | ~75%     |
 
 ---
 
-## 🚀 Installation & Running
+## 🚀 How to Run
 
-To get this project up and running, follow these simple steps:
-
-### Clone the repository
 ```bash
-git clone https://github.com/indranil143/Mental-Health-Sentiment-Analysis-using-Deep-Learning.git
-cd Mental-Health-Sentiment-Analysis-using-Deep-Learning
-```
-### Install required libraries
-```bash
+git clone https://github.com/SmykRwt/Mental-Health-Emotion-Classification-using-RoBERTa.git
+cd Mental-Health-Emotion-Classification-using-RoBERTa
 pip install -r requirements.txt
-```
-### Run the notebook
-```bash
-jupyter notebook Mental_Health_Sentiment_Analysis_(RoBERTa).ipynb
-```
----
-
-## 🤝 Future Work and Contributions
-
-This project is an open invitation to join us in making a positive impact. Contributions are warmly welcomed! If you're inspired to enhance this endeavor, consider:
-
-* **Expanding the Dataset:** Let's collaboratively grow the dataset with more diverse and larger collections, enriching the model's understanding of the human experience.
-* **Exploring Other Models:** Venture into new horizons by experimenting with other transformer models or deep learning architectures, constantly seeking better ways to connect and comprehend.
-* **Deploying the Model:** Imagine an API or a compassionate web application for real-time sentiment analysis, bringing immediate understanding and support to those who need it most.
-* **Bias Analysis:** With a gentle hand and keen eye, investigate and mitigate potential biases in the model's predictions, ensuring fairness and equity in our digital empathy.
-
----
-
-## 📄 License
-
-This project is open-source and available under the [MIT License](https://github.com/indranil143/Mental-Health-Sentiment-Analysis-using-Deep-Learning/blob/main/LICENSE).
-
----
-
-## 📧 Contact
-
-🤝 For any inquiries or collaborations, feel free to reach out to the project maintainer: 
-
-**indranil143**
-* GitHub: https://github.com/indranil143
-* Email: banerjeeindranil143@gmail.com
-
-If you or someone you know needs immediate help, please contact one of the following resources:
-- National Suicide Prevention Lifeline: 1-800-273-8255
-- Crisis Text Line: Text 'HOME' to 741741
-- National Alliance on Mental Illness (NAMI) HelpLine: Call 1-800-950-NAMI (6264) or text 'NAMI' to 62640. ([nami.org](https://www.nami.org/))
-- [More Resources](https://www.helpguide.org/find-help/mental-health/mental-health-helplines/)
-
-> Join us as we explore the data with sensitivity, build powerful models with purpose, and unveil the emotional heartbeat of mental health text. Together, we can make a difference. 🤝✨
+jupyter notebook
