@@ -57,8 +57,8 @@ The system leverages both traditional machine learning techniques and transforme
 
 | Model                | Accuracy |
 |---------------------|----------|
-| Logistic Regression | ~71%     |
-| RoBERTa             | ~75%     |
+| Logistic Regression | ~70%     |
+| RoBERTa             | ~72.25%     |
 
 ---
 
